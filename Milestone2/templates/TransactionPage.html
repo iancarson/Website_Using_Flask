@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Transaction Page.</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+<!-- Using GET method and Transactions.py Python class to receive data from the database , display the following user information: th>Account Number</th>
+                                    <th>Account Type</th>
+                                    <th>Balance</th>
+                                    <th>Created Date</th>
+                                    <th>Transaction Type</th>
+                                    <th>Change in Balance</th>
+                                    <th>When it Occurred</th>
+                                    <th>Expected Total</th>
+                                    <th>Memo</th> -->
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>Transaction Page</h1>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Account Number</th>
+                            <th>Account Type</th>
+                            <th>Balance</th>
+                            <th>Created Date</th>
+                            <th>Transaction Type</th>
+                            <th>Change in Balance</th>
+                            <th>When it Occurred</th>
+                            <th>Expected Total</th>
+                            <th>Memo</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for transaction in transactions %}
+                        <tr>
+                            <td>{{ transaction.account_number }}</td>
+                            <td>{{ transaction.account_type }}</td>
+                            <td>{{ transaction.balance }}</td>
+                            <td>{{ transaction.created_date }}</td>
+                            <td>{{ transaction.transaction_type }}</td>
+                            <td>{{ transaction.change_in_balance }}</td>
+                            <td>{{ transaction.when_it_occurred }}</td>
+                            <td>{{ transaction.expected_total }}</td>
+                            <td>{{ transaction.memo }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+
+    </div>
+
+
+</body>
+</html>

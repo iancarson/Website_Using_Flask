@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Account.</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Create Account</h3>
+                    </div>
+                    <div class="card-body">
+                        <form action="/Milestone2/CreateAccount.py" method="post">
+                            <div class="form-group row">
+                                <label for="accountNumber" class="col-sm-2 col-form-label">Account Number</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="accountNumber" name="accountNumber" placeholder="Account Number">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="accountType" class="col-sm-2 col-form-label">Account Type</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="accountType" name="accountType" placeholder="Account Type">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="accountBalance" class="col-sm-2 col-form-label">Account Balance</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="accountBalance" name="accountBalance" placeholder="Account Balance">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="accountUser" class="col-sm-2 col-form-label">Account User</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="accountUser" name="accountUser" placeholder="Account User">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-10">
+                                    <!-- Create a button Dashboard that loads  the local Dashboard html page when clicked-->
+                                    <button type="submit" class="btn btn-primary">Create Account</button>
+                                    <button type="button" class="btn btn-primary" onclick="location.href='../../Milestone1/templates/Dashboard.html'">Dashboard</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
