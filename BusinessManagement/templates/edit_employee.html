@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+{% block title %}Edit Employee{% endblock %}
+{% block content %}
+<div class="container-fluid">
+    <div class="h3">Edit Employee</div>
+    <div>
+        <form method="POST">
+            {#
+            generate fields with proper types for
+            first_name
+            last_name
+            email
+            and prefill the fields with loaded employee data
+            #}
+            <div class="form-group mb-3">
+                <label class="form-label" for="fn">First Name</label>
+                <input class="form-control" id="fn" name="first_name" value="{{employee.first_name}}" type="text" placeholder="First Name" />
+            </div>
+            <div class="form-group mb-3">
+                <label class="form-label" for="ln">Last Name</label>
+                <input class="form-control" id="ln" name="last_name" value="{{employee.last_name}}" type="text" placeholder="Last Name" />
+            </div>
+            <div class="form-group mb-3">
+                <label class="form-label" for="email">Email</label>
+                <input class="form-control" id="email" name="email" value="{{employee.email}}" type="email" placeholder="Email" />
+            </div>
+            {# use the below for company selection #}
+            {% with val = employee.company_id %}
+            {% include "company_dropdown.html" %}
+            {% endwith %}
+            <br>
+            <input type="submit" class="btn btn-primary" value="Save Employee" />
+        </form>
+    </div>
+</div>
+{% endblock %}

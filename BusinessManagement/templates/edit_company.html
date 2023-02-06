@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+{% block title %}Edit Company{% endblock %}
+{% block content %}
+<div class="container-fluid">
+    <div class="h3">Edit Company</div>
+    <div>
+        <form method="POST">
+            {#
+            generate fields with proper types for
+            name
+            address
+            city
+            website
+            and prefill the fields with loaded company data
+            #}
+            <div class="form-group mb-3">
+                <label class="form-label" for="name">Name</label>
+                <input class="form-control" id="name" name="name" value="{{company.name}}" type="text" placeholder="Company Name" />
+            </div>
+            <div class="form-group mb-3">
+                <label class="form-label" for="address">Address</label>
+                <input class="form-control" id="address" name="address" value="{{company.address}}" type="text" placeholder="Address" />
+            </div>
+            <div class="form-group mb-3">
+                <label class="form-label" for="city">City</label>
+                <input class="form-control" id="city" name="city" value="{{company.city}}" type="text" placeholder="City" />
+            </div>
+            {# use this for country/state selection #}
+            {% include "country_state_selector.html" %}
+            <div class="form-group mb-3">
+                <label class="form-label" for="zip">Zip</label>
+                <input class="form-control" id="zip" name="zip" value="{{company.zip}}" type="text" placeholder="Zip" />
+            </div>
+            <div class="form-group mb-3">
+                <label class="form-label" for="website">Website</label>
+                <input class="form-control" id="website" name="website" value="{{company.website}}" type="text" placeholder="Website" />
+            </div>
+            <input type="submit" class="btn btn-primary" value="Save Company" />
+            <br>
+            <br>
+            <br>
+        </form>
+    </div>
+</div>
+{% endblock %}

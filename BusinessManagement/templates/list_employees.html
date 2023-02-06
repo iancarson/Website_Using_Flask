@@ -1,0 +1,93 @@
+{% extends "layout.html" %}
+{% block title %}Employee Directory{% endblock %}
+{% block content %}
+<div class="container-fluid">
+    <div class="h3 text-center">{{request.args.get("company_name","")}} Employee Directory</div>
+    <form method="GET"  class="form-inline">
+        {# TODO
+        build a horizontal filter/sort form with
+        first_name
+        last_name
+        email
+        company (provided)
+        sort/order (using allowed_columns and provided partial template)
+        limit
+        ensure all fields prefill with request arg data if provided
+        #}
+        <h5>Filter</h5>
+        <div class="row">
+            <div class="col-5" >
+                <input class="form-inline" value="{{request.args.get('fn', '')}}" id="fn" name="fn" type="text" placeholder="First Name" />
+                <input class="form-inline" id="ln" name="ln" value="{{request.args.get('ln', '')}}" type="text" placeholder="Last Name" />
+                <input class="form-inline" id="email" name="email" value="{{request.args.get('email', '')}}" type="email" placeholder="Email" />
+            </div>
+            
+            <div class="col-3">
+                <label class="visually-hidden" for="company">Company</label>
+                {% with val = request.args.get("company", '') %}
+                {% include "company_dropdown.html" %}
+                {% endwith %}
+            </div>
+        </div>
+        <br>
+        <h5>Sort by</h5>
+        {% with cols = allowed_columns %}
+        {% include "sort_filter.html" %}
+        {% endwith %}
+        <br>
+        <h5>Limit</h5>
+        <div class="col-3" >
+            <input class="form-control" id="limit" name="limit" value="{{request.args.get('limit', '')}}" type="number" min="1" max="100" placeholder="Limit" />
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-3">
+                <input type="submit" class="btn btn-primary" value="Filter" />
+            </div>
+            <div class="col-3 mb-6 ">
+                <a href="?" class="btn btn-primary">Reset</a>
+            </div>
+        </div>
+    </form>
+    <table class="table">
+        {% if rows and rows|length > 0 %}
+        <thead>
+            <tr class="text-capitalize">
+                {# generate th tags for each column to display #}
+                {# IMPORTANT use table column names as the headings, replace _ with space #}
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+                <th>Company Name</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {# generate tr with td tags for each piece of data #}
+            {# in the last column add the following
+            an edit button that passes the employee id to employee edit
+            a delete button that passes the employee id and the request args to the employee delete route
+            #}
+            {% for row in rows %}
+            <tr>
+                <td>{{ row['first_name'] }}</td>
+                <td>{{ row['last_name'] }}</td>
+                <td>{{ row['email'] }}</td>
+                <td>{{ row['company_name'] }}</td>
+                <td>
+                    <a class="btn btn-secondary" href="{{ url_for('employee.edit', id=row['id']) }}" role="button">Edit</a>
+                    <a class="btn btn-danger" href="{{ url_for('employee.delete', id=row['id']) }}" role="button">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+        {% else %}
+        <tbody>
+            <tr>
+                <td colspan="100%">No results to show</td>
+            </tr>
+        </tbody>
+        {% endif %}
+    </table>
+</div>
+{% endblock %}
