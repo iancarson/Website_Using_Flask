@@ -5,4 +5,4 @@ The website has the following features:
 - Python back-end.
 - HTML and CSS front-end.
 - Docker Deployment.
-** Good for beginners.
+*Good for beginners.*
