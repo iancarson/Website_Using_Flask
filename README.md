@@ -4,3 +4,5 @@ The website has the following features:
 - GET and POST APIs for various actions.
 - Python back-end.
 - HTML and CSS front-end.
+- Docker Deployment.
+** Good for beginners.
