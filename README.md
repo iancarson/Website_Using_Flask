@@ -6,4 +6,4 @@ The website has the following features:
 - HTML and CSS front-end.
 - Docker Deployment.
 
-*Good for beginners.*
+*Good for beginners😄.*
